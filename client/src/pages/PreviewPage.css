@@ -1,0 +1,75 @@
+ /* ══════════════════════════════════════════════
+   Preview Page  ·  Steps 34-35
+══════════════════════════════════════════════ */
+.pv-root{position:relative;flex:1;overflow:hidden;background:var(--bg,#0a0a0f);display:flex;flex-direction:column;font-family:"Inter","Segoe UI",sans-serif}
+.pv-fullscreen{position:fixed;inset:0;z-index:9999}
+.pv-glow-a{position:fixed;top:-80px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,233,.08),transparent 65%);filter:blur(70px);pointer-events:none;z-index:0}
+.pv-glow-b{position:fixed;bottom:-80px;right:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.06),transparent 65%);filter:blur(70px);pointer-events:none;z-index:0}
+
+/* Header */
+.pv-header{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:14px 18px 12px;border-bottom:1px solid var(--border,rgba(255,255,255,.06));flex-shrink:0;background:var(--bg2,#111118);flex-wrap:wrap;gap:10px}
+.pv-header-left{display:flex;align-items:center;gap:13px}
+.pv-header-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:linear-gradient(135deg,#0ea5e9,#10b981);color:white;font-size:19px;box-shadow:0 4px 18px rgba(14,165,233,.3)}
+.pv-title{font-size:19px;font-weight:900;letter-spacing:-.4px;color:var(--text,#f0f0ff);margin:0 0 2px}
+.pv-sub{font-size:11px;color:var(--text3,#44445a);margin:0}
+.pv-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* Device buttons */
+.pv-devices{display:flex;gap:3px;padding:3px;background:var(--bg3,#16161f);border:1px solid var(--border,rgba(255,255,255,.06));border-radius:9px}
+.pv-dev-btn{width:30px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:none;background:transparent;color:var(--text3,#44445a);font-size:14px;cursor:pointer;transition:.14s}
+.pv-dev-btn:hover{color:var(--text2,#8888aa);background:rgba(255,255,255,.05)}
+.pv-dev-active{background:rgba(14,165,233,.15) !important;color:#38bdf8 !important}
+
+/* Toolbar buttons */
+.pv-toggle-btn,.pv-refresh-btn,.pv-console-btn,.pv-fullscreen-btn{display:flex;align-items:center;gap:5px;height:30px;padding:0 11px;border-radius:8px;border:1px solid var(--border,rgba(255,255,255,.06));background:transparent;color:var(--text3,#44445a);font-size:12px;font-weight:600;cursor:pointer;transition:.14s}
+.pv-toggle-btn:hover,.pv-refresh-btn:hover,.pv-console-btn:hover,.pv-fullscreen-btn:hover{background:var(--bg3,#16161f);color:var(--text2,#8888aa)}
+.pv-toggle-on{background:rgba(16,185,129,.1) !important;border-color:rgba(16,185,129,.3) !important;color:#6ee7b7 !important}
+.pv-console-btn,.pv-fullscreen-btn{padding:0 10px}
+
+/* Layout */
+.pv-layout{position:relative;z-index:1;flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+
+/* Editor panel */
+.pv-editor-panel{display:flex;flex-direction:column;border-right:1px solid var(--border,rgba(255,255,255,.06));overflow:hidden}
+.pv-editor-tabs{display:flex;background:var(--bg2,#111118);border-bottom:1px solid var(--border,rgba(255,255,255,.06));flex-shrink:0}
+.pv-editor-tab{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;border:none;border-bottom:2px solid transparent;background:transparent;color:var(--text3,#44445a);font-size:12px;font-weight:600;cursor:pointer;transition:.14s;white-space:nowrap}
+.pv-editor-tab i{font-size:14px;transition:color .14s}
+.pv-editor-tab:hover{color:var(--text2,#8888aa);background:var(--bg3,#16161f)}
+.pv-editor-tab-active{color:var(--ec,#0ea5e9) !important;border-bottom-color:var(--ec,#0ea5e9) !important}
+.pv-editor-tab-active i{color:var(--ec,#0ea5e9)}
+.pv-monaco-wrap{flex:1;min-height:0;overflow:hidden}
+
+/* Preview side */
+.pv-preview-side{display:flex;flex-direction:column;overflow:hidden;background:var(--bg3,#16161f)}
+.pv-preview-head{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#161b22;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;gap:10px}
+.pv-preview-title{display:flex;align-items:center;gap:7px}
+.pv-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.pv-dot-r{background:#ff5f57}
+.pv-dot-y{background:#febc2e}
+.pv-dot-g{background:#28c840}
+.pv-preview-url{font-size:11px;color:#3d444d;font-family:"Cascadia Code",monospace;margin-left:4px}
+.pv-preview-info{display:flex;align-items:center;gap:6px;font-size:10.5px;color:#3d444d}
+.pv-preview-info i{font-size:12px}
+.pv-preview-size{font-family:"Cascadia Code",monospace;font-size:9.5px;padding:1px 6px;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+
+/* Frame wrap */
+.pv-frame-wrap{flex:1;min-height:0;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:8px;background:#1c1c28}
+.pv-frame-wrap::-webkit-scrollbar{width:5px;height:5px}
+.pv-frame-wrap::-webkit-scrollbar-thumb{background:#21262d;border-radius:2px}
+.pv-frame-container{border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.5);flex-shrink:0;transition:all .3s ease}
+.pv-frame{width:100%;height:100%;border:none;display:block;background:white;border-radius:8px}
+
+/* Console */
+.pv-console{height:160px;flex-shrink:0;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.06);background:#0d1117}
+.pv-console-head{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;background:#161b22;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px;font-weight:700;color:#7d8590;font-family:"Cascadia Code",monospace;flex-shrink:0}
+.pv-console-head i{color:#a78bfa}
+.pv-console-head button{margin-left:auto;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:5px;border:none;background:transparent;color:#3d444d;font-size:10px;cursor:pointer;transition:.14s}
+.pv-console-head button:hover{color:#f87171}
+.pv-console-body{flex:1;overflow-y:auto;padding:8px 12px;font-family:"Cascadia Code",monospace;font-size:11px}
+.pv-console-body::-webkit-scrollbar{width:3px}
+.pv-console-body::-webkit-scrollbar-thumb{background:#21262d}
+.pv-console-empty{color:#3d444d;font-style:italic}
+.pv-console-line{color:#e6edf3;line-height:1.65;padding:1px 0}
+
+/* Responsive */
+@media(max-width:1024px){.pv-layout{grid-template-columns:1fr}.pv-preview-side{height:320px;border-top:1px solid var(--border)}.pv-editor-panel{border-right:none}}

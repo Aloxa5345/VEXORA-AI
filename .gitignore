@@ -1,0 +1,42 @@
+# ── Dependencies ──────────────────────────────────
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# ── Environment variables — NEVER commit ──────────
+.env
+.env.*
+!.env.example
+!.env.production
+!.env.development
+server/.env
+server/.env.*
+!server/.env.example
+!server/.env.production.example
+client/.env
+client/.env.*
+!client/.env.production
+!client/.env.development
+
+# ── Build output ───────────────────────────────────
+client/dist/
+client/build/
+ALOXADGPT/dist/
+
+# ── Logs ───────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+
+# ── OS / Editor ────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# ── Everything outside this project folder ─────────
+# The git root is C:/Users/haard — block all paths
+# above and beside this project from being tracked.
+../
+../../
+../../../

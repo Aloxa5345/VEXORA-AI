@@ -1,0 +1,196 @@
+/* ── Security Page Specific Styles ─────────────── */
+
+.sec-desc {
+  font-size: 12px;
+  color: var(--text2);
+  margin: -6px 0 14px;
+  line-height: 1.5;
+}
+
+/* Status grid */
+.sec-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sec-status-card {
+  padding: 16px 14px;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--sec-c, #ef4444);
+  border-radius: 12px;
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sec-status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.sec-status-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sec-status-icon {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--sec-c, #ef4444) 12%, transparent);
+  color: var(--sec-c, #ef4444);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.sec-status-badge {
+  font-size: 9.5px; font-weight: 700;
+  color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  flex: 1;
+}
+
+.sec-active-badge {
+  display: flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 20px;
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.2);
+  color: #10b981;
+  font-size: 9.5px; font-weight: 700;
+}
+
+.sec-status-card strong { font-size: 12px; color: var(--text); }
+.sec-status-card span   { font-size: 10.5px; color: var(--text3); line-height: 1.4; }
+
+/* Scan result */
+.sec-scan-result {
+  display: flex; align-items: center; gap: 9px;
+  margin-top: 12px; padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 12px; font-weight: 500;
+}
+
+.sec-safe {
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  color: #10b981;
+}
+
+.sec-danger {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  color: #f87171;
+}
+
+/* Test results */
+.sec-test-summary {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 8px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.sec-pass { color: #10b981; }
+.sec-fail { color: #ef4444; }
+
+.sec-test-list {
+  margin-top: 14px;
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+
+.sec-test-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+.sec-test-pass {
+  background: rgba(16,185,129,0.06);
+  border-color: rgba(16,185,129,0.12);
+  color: var(--text);
+}
+
+.sec-test-pass i { color: #10b981; }
+
+.sec-test-fail {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.12);
+  color: var(--text);
+}
+
+.sec-test-fail i { color: #ef4444; }
+.sec-test-row span { flex: 1; }
+.sec-test-row code { font-size: 10px; color: #ef4444; font-family: monospace; }
+
+/* API table */
+.sec-api-table {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sec-api-header {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1.5fr 0.5fr;
+  padding: 8px 14px;
+  background: var(--bg3);
+  font-size: 10px; font-weight: 700;
+  color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-api-row {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1.5fr 0.5fr;
+  padding: 10px 14px;
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.sec-api-row:last-child { border-bottom: none; }
+.sec-api-row:hover { background: var(--bg3); }
+
+.sec-api-row span:first-child {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text);
+}
+
+.sec-status-code { font-weight: 700; font-family: monospace; font-size: 12px; }
+.sec-test-pass .sec-status-code { color: #10b981; }
+.sec-test-fail .sec-status-code { color: #ef4444; }
+
+.sec-response-data {
+  color: var(--text3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 10.5px;
+}
+
+.sec-ms { color: var(--text3); font-size: 11px; font-family: monospace; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sec-status-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 550px) {
+  .sec-status-grid { grid-template-columns: 1fr; }
+  .sec-api-header, .sec-api-row { grid-template-columns: 1fr 0.4fr; }
+  .sec-api-header span:nth-child(3),
+  .sec-api-header span:nth-child(4),
+  .sec-api-row span:nth-child(3),
+  .sec-api-row span:nth-child(4) { display: none; }
+}

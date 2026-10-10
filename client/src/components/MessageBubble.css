@@ -1,0 +1,354 @@
+/* ══════════════════════════════════════════════
+   MessageBubble  ·  Markdown + Copy Button
+══════════════════════════════════════════════ */
+
+/* ── Row layout ── */
+.mb-row {
+  display: flex;
+  gap: 14px;
+  padding: 8px 28px;
+  max-width: 920px;
+  margin: 0 auto;
+  width: 100%;
+  animation: mb-in 0.28s cubic-bezier(.34,1.2,.64,1) both;
+}
+
+@keyframes mb-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.mb-user { flex-direction: row-reverse; }
+.mb-ai   { align-items: flex-start; }
+
+/* ── Avatars ── */
+.mb-avatar {
+  width: 36px; height: 36px; min-width: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.mb-avatar-user {
+  background: var(--grad, linear-gradient(135deg,#7c3aed,#ec4899,#f97316));
+  color: white;
+  box-shadow: 0 4px 14px var(--glow, rgba(124,58,237,0.3));
+  margin-top: 2px;
+}
+
+.mb-avatar-ai {
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ── Body ── */
+.mb-body { display: flex; flex-direction: column; min-width: 0; }
+.mb-body-user { align-items: flex-end; max-width: 75%; }
+.mb-body-ai   { flex: 1; max-width: 88%; }
+
+/* ── Name row ── */
+.mb-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.mb-name {
+  font-size: 11px; font-weight: 700;
+  color: var(--text3, #44445a);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.mb-name-ai { color: var(--p2, #9f5cf7); }
+
+.mb-ai-badge {
+  font-size: 8.5px; font-weight: 800;
+  padding: 1px 6px; border-radius: 20px;
+  background: var(--grad, linear-gradient(135deg,#7c3aed,#ec4899));
+  color: white; letter-spacing: 0.06em;
+}
+
+.mb-time {
+  font-size: 9.5px;
+  color: var(--text3, #44445a);
+}
+
+.mb-tokens {
+  font-size: 9.5px;
+  color: var(--text3, #44445a);
+  opacity: 0.6;
+}
+
+/* copy full message button */
+.mb-copy-msg-btn {
+  display: flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--border, rgba(255,255,255,0.06));
+  color: var(--text3, #44445a);
+  font-size: 10px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  margin-left: auto;
+}
+
+.mb-copy-msg-btn:hover {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.3);
+  color: var(--p2, #9f5cf7);
+}
+
+.mb-copied {
+  background: rgba(16,185,129,0.1) !important;
+  border-color: rgba(16,185,129,0.3) !important;
+  color: #10b981 !important;
+}
+
+/* ── Bubbles ── */
+.mb-bubble {
+  border-radius: 18px;
+  padding: 13px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mb-bubble-user {
+  background: var(--user-bg, linear-gradient(135deg,#1a0a3e,#2d1060));
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 18px 4px 18px 18px;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.15);
+}
+
+.mb-bubble-ai {
+  background: var(--bg2, #111118);
+  border: 1px solid var(--border, rgba(255,255,255,0.06));
+  border-radius: 4px 18px 18px 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  padding: 16px 20px;
+}
+
+/* shimmer top on AI bubble */
+.mb-bubble-ai::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: var(--grad, linear-gradient(135deg,#7c3aed,#ec4899,#f97316));
+  opacity: 0.5;
+}
+
+/* plain text for user */
+.mb-plain {
+  font-size: 14px; line-height: 1.7;
+  color: var(--text, #f0f0ff);
+  white-space: pre-wrap; word-break: break-word;
+}
+
+/* ══════════════════════════════════════════════
+   MARKDOWN STYLES inside AI bubble
+══════════════════════════════════════════════ */
+
+.mb-p {
+  font-size: 14px; line-height: 1.8;
+  color: var(--text, #f0f0ff);
+  margin: 0 0 12px;
+  word-break: break-word;
+}
+
+.mb-p:last-child { margin-bottom: 0; }
+
+.mb-h1 {
+  font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+  color: var(--text, #f0f0ff); margin: 18px 0 10px;
+  background: var(--grad, linear-gradient(135deg,#7c3aed,#ec4899));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.mb-h2 {
+  font-size: 17px; font-weight: 700;
+  color: var(--text, #f0f0ff); margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,0.06));
+}
+
+.mb-h3 {
+  font-size: 15px; font-weight: 700;
+  color: var(--p2, #9f5cf7); margin: 14px 0 7px;
+}
+
+.mb-ul, .mb-ol {
+  margin: 8px 0 12px 6px;
+  padding-left: 18px;
+}
+
+.mb-li {
+  font-size: 14px; line-height: 1.75;
+  color: var(--text, #f0f0ff);
+  margin-bottom: 4px;
+}
+
+.mb-li::marker { color: var(--p2, #9f5cf7); }
+
+.mb-strong {
+  font-weight: 700;
+  color: var(--text, #f0f0ff);
+}
+
+.mb-em {
+  font-style: italic;
+  color: var(--text2, #8888aa);
+}
+
+.mb-blockquote {
+  margin: 12px 0;
+  padding: 10px 16px;
+  border-left: 3px solid var(--p1, #7c3aed);
+  background: rgba(124,58,237,0.06);
+  border-radius: 0 8px 8px 0;
+  color: var(--text2, #8888aa);
+  font-style: italic;
+  font-size: 13.5px;
+}
+
+.mb-hr {
+  border: none; border-top: 1px solid var(--border, rgba(255,255,255,0.06));
+  margin: 16px 0;
+}
+
+.mb-link {
+  color: var(--p2, #9f5cf7);
+  text-decoration: underline; text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.mb-link:hover { color: var(--pink, #ec4899); }
+
+/* inline code */
+.mb-inline-code {
+  font-family: "Cascadia Code", "Fira Code", monospace;
+  font-size: 12.5px;
+  padding: 2px 7px; border-radius: 5px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.22);
+  color: var(--p2, #9f5cf7);
+}
+
+/* ── Code block wrapper ── */
+.mb-code-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 12px 0;
+}
+
+.mb-code-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: #161b22;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mb-code-lang {
+  font-size: 11px; font-weight: 700;
+  color: #7d8590;
+  font-family: "Cascadia Code", monospace;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+/* copy code button */
+.mb-copy-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #7d8590;
+  font-size: 11px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: "Inter", sans-serif;
+}
+
+.mb-copy-btn:hover {
+  background: rgba(124,58,237,0.15);
+  border-color: rgba(124,58,237,0.35);
+  color: #c084fc;
+}
+
+.mb-copy-btn i { font-size: 12px; }
+
+/* ── Table ── */
+.mb-table-wrap {
+  overflow-x: auto;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border, rgba(255,255,255,0.06));
+}
+
+.mb-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+
+.mb-th {
+  padding: 9px 14px;
+  background: rgba(124,58,237,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: var(--p2, #9f5cf7);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  text-align: left;
+}
+
+.mb-td {
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--text, #f0f0ff);
+  font-size: 13px; line-height: 1.6;
+}
+
+.mb-table tr:last-child .mb-td { border-bottom: none; }
+.mb-table tr:hover .mb-td { background: rgba(255,255,255,0.02); }
+
+/* light theme overrides */
+.theme-light .mb-bubble-user {
+  background: linear-gradient(135deg, #ede9fe, #fce7f3);
+  border-color: rgba(124,58,237,0.2);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.1);
+}
+
+.theme-light .mb-bubble-user .mb-plain { color: #1a0a3e; }
+
+.theme-light .mb-bubble-ai {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.07);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.theme-light .mb-inline-code {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.15);
+}
+
+.theme-light .mb-code-header { background: #f0f0f8; }
+.theme-light .mb-code-wrap   { border-color: rgba(0,0,0,0.1); }
+
+/* responsive */
+@media (max-width: 768px) {
+  .mb-row { padding: 6px 14px; }
+  .mb-body-user { max-width: 90%; }
+  .mb-body-ai   { max-width: 96%; }
+}
+
+/* ── Logo image in AI avatar ── */
+.mb-logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}

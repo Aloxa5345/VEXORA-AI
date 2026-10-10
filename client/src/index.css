@@ -1,0 +1,149 @@
+﻿/* ═══════════════════════════════════════════════════════
+   VEXORA AI  ·  Design System v11  ·  Velvet Fire Edition
+   Purple → Pink → Orange  ·  Premium Dark
+═══════════════════════════════════════════════════════ */
+
+:root {
+  /* Typography */
+  --font-xs:   11px; --font-sm: 12px; --font-base: 14px; --font-md: 15px;
+  --font-lg:   18px; --font-xl: 22px; --font-2xl:  28px; --font-3xl: 38px; --font-4xl: 52px;
+
+  /* Spacing */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+  --space-6:24px; --space-7:28px; --space-8:32px; --space-9:40px; --space-10:56px;
+
+  /* Radius */
+  --radius-sm:5px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px;
+  --radius-2xl:20px; --radius-full:999px;
+
+  /* Durations */
+  --dur-fast:140ms; --dur-normal:240ms; --dur-slow:380ms; --dur-slower:580ms;
+
+  /* Z-index */
+  --z-base:1; --z-topbar:5; --z-sidebar:10; --z-modal:100; --z-toast:200;
+
+  /* ── Brand colours ── */
+  --purple:  #7c3aed; --purple2: #9333ea; --purple3: #a855f7;
+  --pink:    #ec4899; --pink2:   #f472b6;
+  --orange:  #f97316; --orange2: #fb923c;
+
+  /* ── Gradients ── */
+  --grad:        linear-gradient(135deg, #7c3aed 0%, #ec4899 52%, #f97316 100%);
+  --grad-h:      linear-gradient(135deg, #9333ea 0%, #f472b6 52%, #fb923c 100%);
+  --grad-v:      linear-gradient(180deg, #7c3aed 0%, #ec4899 52%, #f97316 100%);
+  --grad-text:   linear-gradient(90deg,  #c4b5fd 0%, #f472b6 45%, #fb923c 90%);
+  --grad-soft:   linear-gradient(135deg, rgba(124,58,237,.12), rgba(236,72,153,.08), rgba(249,115,22,.06));
+  --grad-border: linear-gradient(135deg, rgba(124,58,237,.6), rgba(236,72,153,.5), rgba(249,115,22,.4));
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.45);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.55);
+  --shadow-xl: 0 16px 56px rgba(0,0,0,.65);
+  --shadow-glow-purple: 0 0 24px rgba(124,58,237,.55), 0 0 48px rgba(124,58,237,.22);
+  --shadow-glow-pink:   0 0 24px rgba(236,72,153,.50), 0 0 48px rgba(236,72,153,.18);
+  --shadow-glow-brand:  0 4px 24px rgba(124,58,237,.45), 0 8px 48px rgba(236,72,153,.20);
+
+  /* ── Dark backgrounds ── */
+  --bg: #07060f; --bg2: #0e0c1a; --bg3: #141220; --bg4: #1d1a30; --bg5: #26223e;
+  --border:  rgba(255,255,255,.05);
+  --border2: rgba(255,255,255,.09);
+  --border3: rgba(124,58,237,.18);
+
+  /* ── Text ── */
+  --text: #ffffff; --text2: #8b7fa8; --text3: #4a3f68;
+
+  /* ── Scrollbar ── */
+  --scrollbar: #1d1a30;
+
+  /* ── Legacy compat ── */
+  --nx-grad: var(--grad); --nx-glow: rgba(124,58,237,.35);
+  --nx-bg: var(--bg); --nx-text: var(--text); --nx-text2: var(--text2); --nx-text3: var(--text3);
+  --nx-border: var(--border); --nx-border2: var(--border2); --nx-scroll: var(--scrollbar);
+  --nx-ac: var(--purple); --nx-ac2: var(--pink);
+  --nx-green: #22c55e; --nx-amber: #f59e0b; --nx-cyan: #06b6d4;
+}
+
+/* ── Global Reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; margin: 0; }
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+button, textarea { font-family: inherit; }
+button { border: 0; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--purple), var(--pink));
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--purple2), var(--orange));
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL KEYFRAMES
+═══════════════════════════════════════════════════════ */
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(250%) skewX(-15deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(124,58,237,.45); }
+  50%       { box-shadow: 0 0 28px rgba(236,72,153,.65), 0 0 56px rgba(124,58,237,.30); }
+}
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes aurora {
+  0%,100% { transform: translate(0,0) scale(1);    opacity: .8; }
+  33%      { transform: translate(30px,-20px) scale(1.05); opacity: .55; }
+  66%      { transform: translate(-20px,15px) scale(.97); opacity: .9; }
+}
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Sidebar / Brand keyframes ── */
+@keyframes vx-neon-rail {
+  0%   { background-position: 50% 0%;   opacity: .72; }
+  50%  { background-position: 50% 100%; opacity: 1;   }
+  100% { background-position: 50% 0%;   opacity: .72; }
+}
+@keyframes vx-pulse-bar {
+  0%,100% { box-shadow: 0 0 6px rgba(124,58,237,.95), 0 0 16px rgba(236,72,153,.65); }
+  50%      { box-shadow: 0 0 12px #7c3aed, 0 0 28px rgba(236,72,153,.9), 0 0 55px rgba(249,115,22,.45); }
+}

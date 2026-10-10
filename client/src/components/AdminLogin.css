@@ -1,0 +1,269 @@
+/* ── Page wrapper ─────────────────────────────────────── */
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(103, 80, 220, 0.18), transparent 45%),
+    #080b12;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background glow orbs ─────────────────────────────── */
+.al-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.18;
+}
+
+.al-glow-1 {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, #6252f5, transparent 70%);
+}
+
+.al-glow-2 {
+  width: 360px;
+  height: 360px;
+  bottom: -80px;
+  right: -80px;
+  background: radial-gradient(circle, #c04dff, transparent 70%);
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.admin-login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px 32px;
+  border: 1px solid #252d40;
+  border-radius: 20px;
+  background: #101620;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Brand block ──────────────────────────────────────── */
+.login-brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-logo {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #6252f5, #c04dff);
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow: 0 0 32px rgba(129, 112, 255, 0.3);
+  user-select: none;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #f0f3fa;
+}
+
+.login-brand p {
+  margin: 6px 0 0;
+  color: #596680;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Heading block ────────────────────────────────────── */
+.login-heading {
+  margin-bottom: 24px;
+}
+
+.login-heading h2 {
+  margin: 0 0 6px;
+  color: #f5f7fb;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.login-heading p {
+  margin: 0;
+  color: #788398;
+  font-size: 12px;
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login-card label {
+  margin-bottom: 7px;
+  color: #a7b1c3;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ── Input wrapper (icon + field + eye button) ────────── */
+.al-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.al-input-icon {
+  position: absolute;
+  left: 13px;
+  color: #4f5b70;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.al-input-wrap input {
+  width: 100%;
+  padding: 12px 38px 12px 36px;
+  border: 1px solid #293244;
+  border-radius: 9px;
+  outline: none;
+  background: #0b1019;
+  color: #f5f7fb;
+  font-size: 12px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-sizing: border-box;
+}
+
+.al-input-wrap input:focus {
+  border-color: #8170ff;
+  box-shadow: 0 0 0 3px rgba(129, 112, 255, 0.12);
+}
+
+.al-input-wrap input::placeholder {
+  color: #3d4a5e;
+}
+
+/* ── Show/hide password button ────────────────────────── */
+.al-eye-btn {
+  position: absolute;
+  right: 11px;
+  background: transparent;
+  border: none;
+  color: #4f5b70;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.al-eye-btn:hover {
+  color: #8170ff;
+}
+
+/* ── Error message ────────────────────────────────────── */
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -5px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: 8px;
+  background: rgba(248, 113, 113, 0.07);
+  color: #fca5a5;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.login-error i {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Submit button ────────────────────────────────────── */
+.al-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #6556ef, #8a62ef);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity 0.18s, transform 0.15s, box-shadow 0.18s;
+  box-shadow: 0 4px 20px rgba(101, 86, 239, 0.35);
+}
+
+.al-submit-btn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 26px rgba(101, 86, 239, 0.45);
+}
+
+.al-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.al-submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Loading spinner ──────────────────────────────────── */
+.al-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: al-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes al-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 26px;
+  color: #3d4a5e;
+  font-size: 10px;
+  letter-spacing: 0.3px;
+}
+
+.login-footer i {
+  font-size: 11px;
+  color: #4f5b70;
+}
